@@ -57,5 +57,6 @@ include 'nav.php';
 </main>
 
 <?php 
+
 include 'footer.php'; 
 ?>

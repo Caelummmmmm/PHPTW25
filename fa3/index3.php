@@ -10,12 +10,10 @@ function calculateThreeParameters(float $p1, float $p2, float $p3): array {
         'addition'       => $p1 + $p2 + $p3,
         'subtraction'    => $p1 - $p2 - $p3,
         'multiplication' => $p1 * $p2 * $p3,
-        // Prevent division by zero errors safely
         'division'       => ($p2 != 0 && $p3 != 0) ? ($p1 / $p2 / $p3) : 0.0
     ];
 }
 
-// Define operational parameters matching structural targets
 $val1 = 25.0;
 $val2 = 13.0;
 $val3 = 6.0;

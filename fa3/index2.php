@@ -1,13 +1,10 @@
 <?php
 declare(strict_types=1);
 
-// 1. Initialize array with 10 different numbers
 $numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// 2. Perform Calculations
 $sum = array_sum($numbers);
 
-// Sequential reduction formulas
 $difference = $numbers[0];
 $product = $numbers[0];
 $quotient = (float)$numbers[0];
@@ -22,7 +19,6 @@ for ($i = 1; $i < $arrLength; $i++) {
     }
 }
 
-// Format data array representation for output header
 $arrayListString = implode(", ", $numbers);
 ?>
 

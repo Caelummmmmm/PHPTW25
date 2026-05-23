@@ -1,106 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Fruit Directory</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Web-Based Student Resume</title>
+    <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #eceff1;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .resume-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #cfd8dc;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-section {
+        display: flex;
+        border-bottom: 2px solid #37474f;
+        background: #f8f9fa;
+    }
+
+    .avatar-box {
+        width: 30%;
+        padding: 20px;
+        text-align: center;
+        border-right: 1px solid #cfd8dc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .avatar-box img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 3px solid #37474f;
+    }
+
+    .info-box {
+        width: 70%;
+        padding: 20px;
+    }
+
+    .content-block {
+        padding: 20px;
+        border-bottom: 1px solid #eceff1;
+    }
+
+    .content-block:last-child {
+        border-bottom: none;
+    }
+
+    h3 {
+        color: #1a237e;
+        border-left: 4px solid #1a237e;
+        padding-left: 10px;
+        margin-top: 0;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    ul {
+        margin: 5px 0 0 0;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 6px;
+        color: #37474f;
+    }
+    </style>
 </head>
+
 <body>
-
-<h1>Fruit Directory</h1>
-
-<div class="container">
-
-<?php
-
-$fruits = array(
-
-array(
-"name"=>"Apple",
-"image"=>"images/apple.jpg",
-"description"=>"A sweet red fruit.",
-"fact"=>"Rich in fiber and vitamins."
-),
-
-array(
-"name"=>"Banana",
-"image"=>"images/banana.jpg",
-"description"=>"A yellow tropical fruit.",
-"fact"=>"Good source of potassium."
-),
-
-array(
-"name"=>"Cherry",
-"image"=>"images/cherry.jpg",
-"description"=>"A small red fruit.",
-"fact"=>"Contains antioxidants."
-),
-
-array(
-"name"=>"Grapes",
-"image"=>"images/grapes.jpg",
-"description"=>"Small juicy fruits.",
-"fact"=>"Used in making wine."
-),
-
-array(
-"name"=>"Mango",
-"image"=>"images/mango.jpg",
-"description"=>"National fruit of the Philippines.",
-"fact"=>"Rich in Vitamin C."
-),
-
-array(
-"name"=>"Orange",
-"image"=>"images/orange.jpg",
-"description"=>"A citrus fruit.",
-"fact"=>"Boosts immune system."
-),
-
-array(
-"name"=>"Papaya",
-"image"=>"images/papaya.jpg",
-"description"=>"Soft orange tropical fruit.",
-"fact"=>"Good for digestion."
-),
-
-array(
-"name"=>"Pineapple",
-"image"=>"images/pineapple.jpg",
-"description"=>"Tropical fruit with spiky skin.",
-"fact"=>"Contains bromelain enzyme."
-),
-
-array(
-"name"=>"Strawberry",
-"image"=>"images/strawberry.jpg",
-"description"=>"A sweet heart-shaped fruit.",
-"fact"=>"Rich in antioxidants."
-),
-
-array(
-"name"=>"Watermelon",
-"image"=>"images/watermelon.jpg",
-"description"=>"Large refreshing fruit.",
-"fact"=>"Contains high water content."
-)
-
-);
-
-foreach($fruits as $fruit)
-{
-    echo "
-    <div class='card'>
-        <img src='{$fruit['image']}' alt='Fruit'>
-        <h2>{$fruit['name']}</h2>
-        <p>{$fruit['description']}</p>
-        <b>Fact:</b> {$fruit['fact']}
+    <div class="resume-container">
+        <div class="header-section">
+            <div class="avatar-box">
+                <svg viewBox="0 0 24 24" width="120" height="120" fill="#37474f">
+                </svg>
+            </div>
+            <div class="info-box">
+                <?php require("personal.php");?>
+            </div>
+        </div>
+        <div class="content-block">
+            <?php include("objective.php"); ?>
+        </div>
+        <div class="content-block">
+            <?php include("education.php"); ?>
+        </div>
+        <div class="content-block">
+            <?php include("skills.php"); ?>
+        </div>
+        <div class="content-block">
+            <?php include("affiliation.php"); ?>
+        </div>
+        <div class="content-block">
+            <?php include("experience.php"); ?>
+        </div>
     </div>
-    ";
-}
-
-?>
-
-</div>
-
 </body>
+
 </html>

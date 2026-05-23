@@ -1,5 +1,4 @@
 <?php
-// Define a multi-dimensional associative array for 10 fruits
 $fruit_directory = [
     "Apple" => [
         "image" => "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBmcnVpdHxlbnwwfHwwfHx8MA%3D%3Dw=150",
@@ -60,69 +59,136 @@ ksort($fruit_directory);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Fruits Directory</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 20px;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f7f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #3e4a5b;
         }
+
         h2 {
             text-align: center;
-            color: #333;
+            color: #2c3e50;
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
         }
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 12px;
-            text-align: left;
+
+        .fruit-card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
-        th {
-            background-color: #85c8e7;
-            color: white;
-            text-transform: uppercase;
+
+        .fruit-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(133, 200, 231, 0.2);
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        .image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #eef2f5;
         }
-        img {
-            border-radius: 8px;
+
+        .fruit-card img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            width: 100px;
-            height: 100px;
+            transition: transform 0.5s ease;
+        }
+
+        .fruit-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .fruit-name {
+            font-size: 1.5rem;
+            color: #1e2d3b;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .fruit-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 20px;
+            flex-grow: 1; 
+        }
+
+        .fact-box {
+            background-color: #f0f7fb; 
+            border-left: 4px solid #85e7d7; 
+            padding: 12px 16px;
+            border-radius: 0 12px 12px 0;
+            margin: 0;
+        }
+
+        .fact-box strong {
+            color: #3ab06b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .fact-box p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #4b6947;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <h2>My Fruits</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Facts</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php // Use a foreach loop to iterate through the fruits directory ?>
-            <?php foreach ($fruit_directory as $name => $details): ?>
-                <tr>
-                    <td><img src="<?php echo $details['image']; ?>" alt="<?php echo $name; ?>"></td>
-                    <td><strong><?php echo $name; ?></strong></td>
-                    <td><?php echo $details['description']; ?></td>
-                    <td><?php echo $details['facts']; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <h2>My Fruits Directory</h2>
+
+    <div class="fruit-grid">
+        <?php // Keep your exact, clean foreach statement logic intact ?>
+        <?php foreach ($fruit_directory as $name => $details): ?>
+            <div class="fruit-card">
+                <div class="image-wrapper">
+                    <img src="<?php echo $details['image']; ?>" alt="<?php echo $name; ?>">
+                </div>
+                <div class="card-content">
+                    <h3 class="fruit-name"><?php echo $name; ?></h3>
+                    <p class="fruit-description"><?php echo $details['description']; ?></p>
+                    <div class="fact-box">
+                        <strong>Quick Fact</strong>
+                        <p><?php echo $details['facts']; ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
 </body>
 </html>

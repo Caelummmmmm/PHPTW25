@@ -6,7 +6,6 @@ function cookie($name) {
 }
 if ($action === 'set') {
    $now = time();
-   // 1. Store the exact expiration timestamp in separate cookies so JS can read them
    setcookie('lab2_firstname', $_POST['firstname'], $now + 10, $path);
    setcookie('lab2_firstname_exp', $now + 10, $now + 10, $path);
    setcookie('lab2_middlename', $_POST['middlename'], $now + 20, $path);
@@ -176,16 +175,14 @@ $justDeleted = isset($_GET['deleted']);
     </div>
     <script>
     function update() {
-        // Get current client time in seconds
         const nowInSeconds = Math.floor(Date.now() / 1000);
         document.querySelectorAll('.row').forEach(row => {
             const expTimestamp = parseInt(row.dataset.exp);
             const box = row.querySelector('.count');
             const valBox = row.querySelector('.val');
-            // If no cookie expiration timestamp exists, it's already empty/expired
             if (!expTimestamp || nowInSeconds >= expTimestamp) {
                 box.textContent = 'Expired';
-                valBox.textContent = '—'; // Clear the value visually
+                valBox.textContent = '—'; 
                 row.classList.add('exp');
             } else {
                 const remaining = expTimestamp - nowInSeconds;
@@ -194,7 +191,6 @@ $justDeleted = isset($_GET['deleted']);
             }
         });
     }
-    // Check every 200ms for a smoother real-time response
     setInterval(update, 200);
     update();
     </script>
